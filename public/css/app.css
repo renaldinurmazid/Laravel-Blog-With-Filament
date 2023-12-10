@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'BobaLand';
+    src: url('../font/Bobaland-OVXB3.otf') format('opentype');
+    
+  }
+  .font-bobaland {
+    font-family: 'BobaLand', sans-serif;
+  }

@@ -1,38 +1,29 @@
-<div>
-    <div class="relative">
-        <object data="{{ $post->banner_url }}" class="w-full rounded-lg">
-            <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="/images/404-image.jpg"
-                alt="{{ $post->title }}">
-        </object>
-
-        <div class="absolute bottom-0 flex p-3 bg-white dark:bg-gray-900 rounded-tr-lg">
-            <img class="object-cover object-center w-10 h-10 rounded-full"src="{{ $post->author->photo_url }}"
-                alt="{{ $post->author->name }}">
-
-            <div class="mx-4">
-                <h1 class="text-sm text-gray-700 dark:text-gray-200">
-                    {{ $post->author->name }}
-                </h1>
-                <p class="text-sm text-gray-500 dark:text-gray-400">
-                    {{ $post->created_at->diffForHumans() }}
-                </p>
-            </div>
+<div class="p-2 max-w-sm">
+    <div class="flex rounded-lg h-full dark:bg-gray-800 bg-white p-8 flex-col hover:shadow-2xl">
+        <div class="mb-3">
+            <img src="{{ $post->banner_url }}" alt="img_post" width="400" height="100" class="rounded-xl">
+        </div>
+        <div class="flex items-center mb-3">
+            <a href="{{ route('posts.show', $post->slug) }}" class="text-gray-900 font-bold dark:text-white text-lg "
+                tabindex="0" role="link">{{ $post->title }}</a>
+        </div>
+        <div class="flex flex-col justify-between flex-grow">
+            <p class="truncate-20-words leading-relaxed text-base text-gray-600 dark:text-gray-300">
+                {{ $post->excerpt }}
+            </p>
         </div>
     </div>
-
-    <h1 class="mt-6 text-xl font-semibold text-gray-800 dark:text-white">
-        {{ $post->title }}
-    </h1>
-
-    <hr class="w-32 my-6 text-blue-500">
-
-    <span class="px-2 py-1 rounded-full bg-blue-600/20 text-blue-500 text-sm">{{ $post->category->name }}</span>
-
-    <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mt-2">
-        {{ $post->excerpt }}
-    </p>
-
-    <a href="{{ route('posts.show', $post->slug) }}"
-        class="inline-block mt-4 text-blue-500 underline hover:text-blue-400">Read
-        more</a>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let elements = document.querySelectorAll('.truncate-20-words');
+        elements.forEach(function (el) {
+            let wordsArray = el.textContent.split(' ');
+            if (wordsArray.length > 40) {
+                el.textContent = wordsArray.slice(0, 40).join(' ') + '...';
+            }
+        });
+    });
+
+</script>

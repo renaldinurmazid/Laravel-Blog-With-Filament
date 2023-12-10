@@ -1,15 +1,13 @@
 <x-default-layout>
 
 
-    <section class="bg-white dark:bg-gray-900">
+    <section class="bg-success dark:bg-gray-900">
         <div class="container px-6 py-10 mx-auto">
 
 
             <h1 class="text-center text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
                 All Post
             </h1>
-
-
             <form class="mt-4" action="/posts" x-data="{ expandFilter: false }" x-ref="form">
                 <label for="default-search"
                     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -28,8 +26,6 @@
                         class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
 
                 </div>
-
-
                 <button type="button" @click="expandFilter =! expandFilter"
                     class="py-2.5 px-5 mr-2 my-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Filters</button>
                 <a href="/posts" x-show="expandFilter" x-transition x-cloak
@@ -61,13 +57,7 @@
                 </div>
 
             </form>
-
-
-
-
             <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2 xl:grid-cols-3" x-data>
-
-
                 @forelse ($posts as $post)
                     <x-single-post :post="$post" />
                 @empty
@@ -75,10 +65,9 @@
                         There are no posts to show.
                     </h1>
                 @endforelse
-
-
             </div>
         </div>
     </section>
+    
 
 </x-default-layout>

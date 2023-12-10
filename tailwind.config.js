@@ -4,35 +4,32 @@ import typography from "@tailwindcss/typography";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: [
-        "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
-        "./vendor/laravel/jetstream/**/*.blade.php",
-        "./storage/framework/views/*.php",
-        "./resources/views/**/*.blade.php",
-    ],
+  content: [
+    "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
+    "./vendor/laravel/jetstream/**/*.blade.php",
+    "./storage/framework/views/*.php",
+    "./resources/views/**/*.blade.php",
+    "./node_modules/flowbite/**/*.js",
+],
 
-    theme: {
-        extend: {
-            fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
-            },
-            colors: {
-                primary: {
-                    50: "#eff6ff",
-                    100: "#dbeafe",
-                    200: "#bfdbfe",
-                    300: "#93c5fd",
-                    400: "#60a5fa",
-                    500: "#3b82f6",
-                    600: "#2563eb",
-                    700: "#1d4ed8",
-                    800: "#1e40af",
-                    900: "#1e3a8a",
-                    950: "#172554",
-                },
-            },
+darkMode:'class',
+
+theme: {
+    extend: {
+        fontFamily: {
+            sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+            bobaland: ['BobaLand', 'sans-serif'],
+        },
+        colors: {
+            primary:'#004D5B',
+            secondary:'#379EAF',
+            success: '#E9F4F5',
+            danger: '#006679',
         },
     },
+},
 
-    plugins: [forms, require("flowbite-typography")],
+plugins: [forms, require("flowbite-typography"), require('flowbite/plugin')],
+
 };
+
