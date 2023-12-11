@@ -2,15 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoryM;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\HtmlString;
 
 class PostController extends Controller
 {
     public function welcome()
     {
+        $categories= CategoryM::all();
+        $cleanDescriptions = [];
+        foreach ($categories as $category) {
+            $cleanDescription = strip_tags($category->description);
+            $cleanDescriptions[$category->id] = new HtmlString($cleanDescription);
+        }
         return view('welcome', [
-            'posts' => Post::latest()->paginate(9)
+            'posts' => Post::latest()->paginate(9),
+            'categories' => $categories,
+            'cleanDescriptions' => $cleanDescriptions,
         ]);
     }
 

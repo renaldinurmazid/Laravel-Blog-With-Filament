@@ -6,7 +6,7 @@
                 <header class="mb-4 lg:mb-6 not-format">
                     <address class="flex items-center mb-6 not-italic">
                         <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                            <img class="mr-4 w-16 h-16 rounded-full" src="{{ $post->author->photo_url }}"
+                            <img class="mr-4 w-16 h-16 rounded-full" src="{{ $post->author->photo_url }}" width="100%" height="auto"
                                 alt="{{ $post->author->name }}">
                             <div>
                                 <a href="#" rel="author"
@@ -29,7 +29,7 @@
                 {{-- Content Start --}}
 
                 @if ($post->banner)
-                <img src="{{ $post->banner_url }}" alt="{{ $post->title }}" class="w-full rounded-md">
+                <img src="{{ $post->banner_url }}" alt="{{ $post->title }}" class="w-full rounded-md" width="100%" height="auto">
                 @endif
                 <div class="text-justify whitespace-pre-line">
                     {!! $post->content !!}
@@ -73,7 +73,8 @@
                 <img class="object-cover w-full rounded-t-lg h-20 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
                     src="{{ $p->banner_url }}" alt="">
                 <div class="flex flex-col justify-between p-4 leading-normal">
-                    <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{$p->title}}</h5>
+                    <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{$p->title}}
+                    </h5>
                     <p class="truncate-20-words mb-3 font-normal text-gray-700 dark:text-gray-400">{{$p->excerpt}}</p>
                 </div>
             </a>
@@ -90,6 +91,6 @@
                 }
             });
         });
-    
+
     </script>
 </x-default-layout>
