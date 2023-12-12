@@ -1,13 +1,12 @@
 <x-default-layout>
-    <main class="grid grid-cols-1 md:flex md:flex-col-2 pt-8 pb-16 lg:pt-16 lg:pb-24 bg-success dark:bg-gray-900">
-        <div class="flex justify-between px-4 mx-auto max-w-screen-2xl">
+    <main class="grid grid-cols-1 px-6 md:flex pt-8 pb-16 lg:pt-16 lg:pb-24 bg-success dark:bg-gray-900 md:justify-between">
+        <div class="md:flex md:w-5/6 justify-between md:mx-12 md:w-2xl">
             <article
-                class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+                class="w-full max-w-4xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
                 <header class="mb-4 lg:mb-6 not-format">
                     <address class="flex items-center mb-6 not-italic">
                         <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                            <img class="mr-4 w-16 h-16 rounded-full" src="{{ $post->author->photo_url }}" width="100%" height="auto"
-                                alt="{{ $post->author->name }}">
+                            <img class="mr-4 w-16 h-16 rounded-full" src="{{ $post->author->photo_url }}" alt="{{ $post->author->name }}">
                             <div>
                                 <a href="#" rel="author"
                                     class="text-xl font-bold text-gray-900 dark:text-white">{{ $post->author->name }}</a>
@@ -25,19 +24,13 @@
                         {{ $post->title }}</h1>
                 </header>
 
-
-                {{-- Content Start --}}
-
                 @if ($post->banner)
-                <img src="{{ $post->banner_url }}" alt="{{ $post->title }}" class="w-full rounded-md" width="100%" height="auto">
+                <img src="{{ $post->banner_url }}" alt="{{ $post->title }}" class="w-full rounded-md">
                 @endif
-                <div class="text-justify whitespace-pre-line">
+                 <div class="text-justify whitespace-pre-line">
                     {!! $post->content !!}
                 </div>
-
-                {{-- Content End --}}
-
-                <div class="comments mt-5 bg-primary dark:bg-secondary p-4 rounded-lg">
+                <div class="comments mt-3 bg-primary dark:bg-secondary p-4 rounded-lg">
                     <div id="disqus_thread"></div>
                     <script>
                         /**
@@ -63,19 +56,19 @@
                 </div>
             </article>
         </div>
-        <div class="p-4 sm:col-span-6 lg:col-span-4">
+        <div class=" md:mx-6 w-full">
             <div class="m-2">
-                <p class="text-xl md:text-3xl font-bold text-primary dark:text-white">Artikel Terbaru!</p>
+                <p class="text-xl md:text-2xl font-bold text-primary dark:text-white">Artikel Terbaru!</p>
             </div>
             @foreach ($posts as $p)
             <a href="{{ route('posts.show', $p->slug) }}"
-                class="flex flex-rows m-3 p-4 items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-lg md:h-40 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <img class="object-cover w-full rounded-t-lg h-20 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
+                class="flex flex-rows my-1 md:mx-3 md:my-3 py-2 px-2 items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-lg md:h-40 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img class="object-cover rounded-xl h-20 w-20 m-2"
                     src="{{ $p->banner_url }}" alt="">
-                <div class="flex flex-col justify-between p-4 leading-normal">
-                    <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{$p->title}}
+                <div class="flex flex-col justify-between leading-normal">
+                    <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white">{{$p->title}}
                     </h5>
-                    <p class="truncate-20-words mb-3 font-normal text-gray-700 dark:text-gray-400">{{$p->excerpt}}</p>
+                    <p class="truncate-20-words font-normal text-gray-700 dark:text-gray-400">{{$p->excerpt}}</p>
                 </div>
             </a>
             @endforeach
